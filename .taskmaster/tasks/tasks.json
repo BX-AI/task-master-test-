@@ -1,0 +1,196 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Initialize Git Repository and Project Structure",
+        "description": "Create the main Git repository with proper directory structure for backend and frontend projects",
+        "details": "1. Initialize a new Git repository\n2. Create directory structure:\n   - /backend (for Spring Boot project)\n   - /frontend (for React project)\n   - /docs (for documentation)\n3. Create root-level README.md with project overview and setup instructions\n4. Add .gitignore file with common patterns for Java and Node.js projects\n5. Set up initial commit with basic project structure",
+        "testStrategy": "Verify repository structure exists, README.md is readable, and .gitignore properly excludes build artifacts and dependencies",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Initialize Git Repository",
+            "description": "Create a new Git repository and initialize version control for the project",
+            "dependencies": [],
+            "details": "Run 'git init' command in the project root directory to initialize a new Git repository. This creates the .git directory and sets up the basic Git infrastructure for version control tracking.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Create Directory Structure",
+            "description": "Set up the main project directory structure for backend, frontend, and documentation",
+            "dependencies": [
+              1
+            ],
+            "details": "Create the following directories: /backend (for Spring Boot project), /frontend (for React project), and /docs (for documentation). This establishes the organizational structure for the multi-component project.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create Root README.md",
+            "description": "Generate the main project README file with overview and setup instructions",
+            "dependencies": [
+              2
+            ],
+            "details": "Create a comprehensive README.md file in the project root containing project overview, architecture description, setup instructions for both backend and frontend, and basic usage guidelines. Include sections for prerequisites, installation steps, and running the application.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Configure .gitignore File",
+            "description": "Set up .gitignore with appropriate patterns for Java and Node.js projects",
+            "dependencies": [
+              2
+            ],
+            "details": "Create a .gitignore file with common exclusion patterns for Java (target/, *.class, *.jar), Node.js (node_modules/, dist/, *.log), IDE files (.vscode/, .idea/), and OS-specific files (.DS_Store, Thumbs.db). This prevents unnecessary files from being tracked in version control.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Prepare Initial Commit",
+            "description": "Stage and prepare the initial project structure for the first Git commit",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Add all created files and directories to the Git staging area using 'git add .', then create the initial commit with message 'Initial project structure setup' using 'git commit -m'. This establishes the baseline project state in version control.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Generate Spring Boot Backend Project",
+        "description": "Create and configure the Spring Boot application using Gradle with required dependencies",
+        "details": "1. Use Spring Initializr to generate project with:\n   - Project: Gradle - Groovy\n   - Language: Java\n   - Spring Boot version: 3.2.x (latest stable)\n   - Group: com.taskmaster\n   - Artifact: backend\n   - Package name: com.taskmaster.backend\n   - Packaging: Jar\n   - Java version: 17\n   - Dependencies: Spring Web\n2. Extract generated project to /backend directory\n3. Verify build.gradle contains correct dependencies\n4. Create standard package structure under src/main/java/com/taskmaster/backend\n5. Add backend-specific README.md with setup and run instructions",
+        "testStrategy": "Run './gradlew build' to ensure project compiles successfully and './gradlew bootRun' starts the application on default port 8080",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Implement Backend Health Check API Endpoint",
+        "description": "Create a REST controller with health check endpoint that returns server status",
+        "details": "1. Create HealthController class in com.taskmaster.backend.controller package\n2. Annotate with @RestController\n3. Implement GET endpoint:\n   @GetMapping(\"/api/health\")\n   public ResponseEntity<Map<String, String>> health() {\n       Map<String, String> response = new HashMap<>();\n       response.put(\"status\", \"UP\");\n       response.put(\"timestamp\", Instant.now().toString());\n       return ResponseEntity.ok(response);\n   }\n4. Ensure endpoint is accessible at http://localhost:8080/api/health\n5. Configure CORS to allow frontend requests during development",
+        "testStrategy": "Test endpoint manually using curl or Postman to verify it returns JSON response {\"status\": \"UP\", \"timestamp\": \"...\"}. Verify CORS headers are present for cross-origin requests",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Generate React Frontend Project",
+        "description": "Create and configure the React application with modern tooling",
+        "details": "1. Navigate to /frontend directory\n2. Use Vite to create React project:\n   npm create vite@latest . -- --template react\n3. Install dependencies: npm install\n4. Verify project structure includes:\n   - src/ directory with App.jsx, main.jsx\n   - public/ directory with index.html\n   - package.json with React and Vite dependencies\n5. Create frontend-specific README.md with setup and run instructions\n6. Test that development server starts with 'npm run dev'",
+        "testStrategy": "Run 'npm run dev' to start development server on port 5173, verify React app loads in browser with default Vite + React page",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Configure Frontend Development Proxy",
+        "description": "Set up proxy configuration to route API requests from frontend to backend during development",
+        "details": "1. Modify vite.config.js to include proxy configuration:\n   export default defineConfig({\n     plugins: [react()],\n     server: {\n       proxy: {\n         '/api': {\n           target: 'http://localhost:8080',\n           changeOrigin: true,\n           secure: false\n         }\n       }\n     }\n   })\n2. Ensure proxy routes all /api/* requests to backend server\n3. Test proxy configuration by starting both servers\n4. Verify no CORS errors occur when making requests to /api endpoints",
+        "testStrategy": "Start both backend (port 8080) and frontend (port 5173) servers, verify that requests to http://localhost:5173/api/health are proxied to backend without CORS errors",
+        "priority": "medium",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Implement Frontend Health Check Integration",
+        "description": "Create React component that fetches and displays backend health status",
+        "details": "1. Create HealthCheck component in src/components/HealthCheck.jsx:\n   - Use useState and useEffect hooks\n   - Fetch data from /api/health endpoint\n   - Handle loading, success, and error states\n2. Implement fetch logic:\n   useEffect(() => {\n     fetch('/api/health')\n       .then(response => response.json())\n       .then(data => setHealthStatus(data))\n       .catch(error => setError(error.message));\n   }, []);\n3. Display status with appropriate styling\n4. Import and use HealthCheck component in App.jsx\n5. Add basic CSS for status display",
+        "testStrategy": "With both servers running, verify frontend displays backend health status. Test error handling by stopping backend server and confirming error message appears",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Create Comprehensive Documentation",
+        "description": "Write detailed README files and setup instructions for the complete project",
+        "details": "1. Update root README.md with:\n   - Project overview and architecture\n   - Prerequisites (JDK 17+, Node.js LTS)\n   - Quick start guide for both backend and frontend\n   - Directory structure explanation\n2. Enhance backend/README.md with:\n   - Gradle commands (build, test, run)\n   - API endpoint documentation\n   - Development tips\n3. Enhance frontend/README.md with:\n   - npm commands (install, dev, build)\n   - Proxy configuration explanation\n   - Component structure\n4. Add troubleshooting section for common issues",
+        "testStrategy": "Follow documentation step-by-step on a clean environment to ensure all instructions work correctly. Verify all commands and URLs are accurate",
+        "priority": "medium",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement Error Handling and Logging",
+        "description": "Add proper error handling and logging mechanisms to both backend and frontend",
+        "details": "1. Backend error handling:\n   - Add @ControllerAdvice for global exception handling\n   - Configure logging with logback-spring.xml\n   - Add request/response logging for API endpoints\n2. Frontend error handling:\n   - Create ErrorBoundary component for React error catching\n   - Add try-catch blocks around API calls\n   - Implement user-friendly error messages\n3. Add console logging for debugging in development\n4. Ensure errors don't crash the applications",
+        "testStrategy": "Test error scenarios: stop backend while frontend is running, simulate network errors, verify appropriate error messages are displayed and logged",
+        "priority": "medium",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Add Development Environment Validation",
+        "description": "Create scripts and checks to validate development environment setup",
+        "details": "1. Create environment check scripts:\n   - backend/check-env.sh to verify Java version and Gradle\n   - frontend/check-env.sh to verify Node.js and npm versions\n2. Add package.json script for environment validation\n3. Create docker-compose.yml for optional containerized development\n4. Add IDE configuration files (.vscode/settings.json, .idea/ configs)\n5. Include environment validation in CI/CD preparation\n6. Document supported IDE configurations",
+        "testStrategy": "Run environment check scripts on different systems, verify they correctly identify version mismatches and missing dependencies",
+        "priority": "low",
+        "dependencies": [
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Finalize and Test Complete Integration",
+        "description": "Perform end-to-end testing and prepare the foundation for production deployment",
+        "details": "1. Comprehensive integration testing:\n   - Test complete startup sequence (backend → frontend)\n   - Verify health check works end-to-end\n   - Test in different browsers and environments\n2. Performance optimization:\n   - Optimize build configurations\n   - Add production build scripts\n   - Verify bundle sizes are reasonable\n3. Security hardening:\n   - Review CORS configuration\n   - Add security headers\n   - Validate input sanitization\n4. Final code review and cleanup\n5. Tag release as v1.0.0-foundation\n6. Prepare deployment documentation",
+        "testStrategy": "Execute full integration test suite, perform load testing on health endpoint, verify production builds work correctly, and confirm all documentation is accurate and complete",
+        "priority": "medium",
+        "dependencies": [
+          8,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-14T06:38:46.539Z",
+      "updated": "2025-07-14T06:54:30.336Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

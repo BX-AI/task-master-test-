@@ -1,0 +1,636 @@
+# AI Creative Studio - Product Requirements Document
+
+## Overview
+
+AI Creative Studio는 다양한 AI 기술을 활용하여 챗봇, 이미지, 비디오, 오디오 콘텐츠를 생성할 수 있는 통합 크리에이티브 플랫폼입니다. 마케터, 콘텐츠 크리에이터, 스타트업, 개인 크리에이터들이 복잡한 기술적 지식 없이도 고품질의 AI 생성 콘텐츠를 만들 수 있도록 지원합니다.
+
+**해결하는 문제:**
+
+- 여러 AI 도구를 개별적으로 사용해야 하는 번거로움
+- 복잡한 AI 기술에 대한 전문 지식 부족
+- 일관성 있는 브랜드 콘텐츠 제작의 어려움
+- 효율적인 마케팅 전략 수립의 복잡성
+
+**핵심 가치:**
+
+- 원스톱 AI 크리에이티브 솔루션 제공
+- 직관적이고 사용하기 쉬운 인터페이스
+- 다양한 AI 모델을 통한 고품질 결과물
+- 통합된 작업 환경에서의 효율성 극대화
+
+## Core Features
+
+### 1. 통합 AI 생성 도구
+
+**기능:** 텍스트, 이미지, 비디오, 오디오를 하나의 플랫폼에서 생성 
+**중요성:** 사용자가 여러 도구를 오가며 작업할 필요 없이 모든 콘텐츠를 통합 관리 
+**작동 방식:** 각 생성 도구는 독립적으로 작동하지만 공통 인터페이스와 파일 관리 시스템을 공유
+
+### 2. BXONE1 마케팅 전략 도구
+
+**기능:** AI 기반 마케팅 캠페인 계획 및 브랜드 전략 수립 
+**중요성:** 마케터들이 데이터 기반의 체계적인 마케팅 전략을 수립할 수 있도록 지원 
+**작동 방식:** 사용자 입력을 바탕으로 타겟 분석, 콘텐츠 전략, 캠페인 로드맵을 자동 생성
+
+### 3. Concept Maker 챗봇
+
+**기능:** BXONE1 마케팅 전략 도구를 통해 생성된 내용들을 기반으로 (RAG)
+창작 아이디어 생성 및 개발 지원을 위한 대화형 AI 
+**중요성:** 크리에이터의 창작 과정에서 아이디어 블록을 해결하고 창의성을 촉진 
+**작동 방식:** 
+1. 사용자가 BXONE1에서 생성한 아웃풋을 기준으로 프로젝트가 생성되며 이 프로젝트는 생성된 아웃풋을 기반으로 RAG를 통해서 데이터를 가져오고 이를 통해서 아이디어 생성, 광고 카피생성, SNS 글 자동 생성 등 다양한 Agent의 역할을 수행
+2. 자연어 처리를 통해 사용자와 대화하며 맞춤형 아이디어와 제안을 제공
+
+### 4-1. Creative 생성 도구 - Image gen
+**기능:** 사용자는 예시 이미지를 확인할 수 있으며 해당 이미지는 정해진 Template(당사에서 미리 만들어 놓은)을 통해서 생성이 가능함
+**중요성:** 사용자는 예상이 가능한 이미지 생성의 테두리 안에서 다양한 방식으로 자신만의 이미지를 AI를 통해서 손쉽게 생성할 수 있게 됨 
+**작동 방식:** 
+1. 당사에서 n8n work flow를 통해서 만든 template을 통해서 입력해야 할 값(제품 사진, 마케팅 문구 등)을 입력하면 샘플 이미지와 같지만 AI를 통해 변형된 새로운 이미지를 손쉽게 생성
+2. 해당 이미지의 metadata의 경우 Gallery에 게재됨
+
+### 4-2. Creative 생성 도구 - Video gen
+**기능:** 사용자는 예시 동영상을 확인할 수 있으며 정해진 템플릿 가이드라인에 맞게 이미지와 텍스트를 입력하여 동영상을 생성할 수 있게 됨
+**중요성:** 사용자는 예상이 가능한 동영상 생성의 테두리 안에서 다양한 방식으로 자신만의 이미지를 AI를 통해서 손쉽게 동영상으로 생성할 수 있게 됨 
+**작동 방식:** 
+1. 당사에서 n8n work flow를 통해서 만든 template을 통해서 입력해야 할 값(4-1도구를 통해 생성된 이미지, 마케팅 문구 등)을 입력하면 샘플 이미지와 같지만 AI를 통해 변형된 새로운 이미지를 손쉽게 생성
+2. 해당 동영상의 metadata의 경우 Gallery에 게재됨
+   
+### 5. 통합 파일 관리 시스템
+
+**기능:** 모든 생성 콘텐츠를 체계적으로 저장, 관리, 검색 
+**중요성:** 작업 효율성 향상 및 콘텐츠 재사용 가능성 증대 
+**작동 방식:** 태그 기반 분류, 즐겨찾기, 검색 기능을 통한 효율적인 콘텐츠 관리
+
+### 6. Gallery - 통합 Explore 공간
+
+**기능:** 사용자들이 생성한 이미지를 공개적으로 게시하고 탐색할 수 있는 SNS형 갤러리 
+**중요성:** 커뮤니티 구축과 사용자 참여도 향상, 생성된 콘텐츠의 바이럴 효과 **작동 방식:** 사용자가 생성한 이미지를 공개 설정하면 Gallery에 표시되며, 다른 사용자들이 좋아요, 댓글, 공유 가능
+
+### 57. 소셜 통합 인증 시스템
+
+**기능:** Google, Kakao, Naver 계정을 통한 간편 로그인 및 회원가입 
+**중요성:** 사용자 진입 장벽을 낮추고 편의성 제공 
+**작동 방식:** OAuth 2.0 프로토콜을 통한 안전한 소셜 로그인 구현
+
+## User Experience
+
+### 사용자 페르소나
+
+**1. 디지털 마케터 (김민수, 29세)**
+
+- 스타트업 마케팅 담당자
+- 빠른 콘텐츠 제작과 A/B 테스트를 위한 다양한 크리에이티브 필요
+- 마케팅 전략 수립을 위한 데이터 기반 인사이트 요구
+
+**2. 콘텐츠 크리에이터 (이지혜, 25세)**
+
+- 유튜버 및 인스타그램 인플루언서
+- 일관된 브랜드 톤앤매너를 유지하면서 다양한 콘텐츠 제작 필요
+- 썸네일, 배경음악, 영상 편집 소재 등 다양한 리소스 요구
+
+**3. 소셜 크리에이터 (정유나, 22세)**
+
+- 인스타그램 및 틱톡 활동
+- 다른 크리에이터들과의 교류 및 영감 획득 희망
+- 트렌디한 이미지 생성 및 공유를 통한 팔로워 확보
+
+**4. 소상공인 (박성호, 35세)**
+
+- 온라인 쇼핑몰 운영자
+- 제품 소개 이미지, 광고 영상 등 마케팅 자료 제작 필요
+- 비용 효율적인 마케팅 솔루션 선호
+
+### 주요 사용자 플로우
+
+**1. 신규 사용자 온보딩**
+
+1. 랜딩 페이지 방문 → Hero 영상 시청
+2. "시작하기" 버튼 클릭 → 회원가입 페이지 이동
+3. 소셜 로그인 또는 이메일 회원가입
+4. 이메일 인증 (이메일 가입시)
+5. AI Studio 대시보드 진입
+
+**2. 통합 마케팅 전략 수립**
+
+1. Marketing Strategy → BXONE1 선택
+2. 비즈니스 정보 입력 (업종, 타겟, 목표 등)
+3. AI 분석 결과 확인
+4. 생성된 전략을 바탕으로 필요한 크리에이티브 제작
+5. 캠페인 실행 및 모니터링
+
+**3. 이미지/비디오 생성 워크플로우**
+
+1. AI Studio → Image Gen 선택
+2. 프롬프트 입력 및 스타일 설정
+3. 생성 버튼 클릭 → 로딩 상태 표시
+4. 결과 확인 → 편집 또는 재생성
+5. 만족 시 다운로드 또는 저장
+
+
+
+### UI/UX 고려사항
+
+**1. 모던하고 직관적인 디자인**
+
+- 깔끔한 인터페이스와 일관된 디자인 시스템
+- 다크/라이트 테마 지원
+- 반응형 디자인으로 모든 디바이스에서 최적 경험
+
+**2. 생동감 있는 인터랙션**
+
+- 부드러운 트랜지션과 마이크로 애니메이션
+- 호버 효과와 피드백을 통한 사용자 가이드
+- 로딩 상태의 시각적 표현
+
+**3. 접근성 및 사용성**
+
+- 키보드 네비게이션 지원
+- 색상 대비 및 텍스트 가독성 확보
+- 툴팁과 도움말을 통한 사용자 가이드
+
+## Technical Architecture
+
+### 시스템 구성 요소
+
+**Frontend Layer**
+
+- React.js/Next.js 기반 SPA
+- Tailwind CSS를 통한 스타일링
+- Zustand를 통한 상태 관리
+- Framer Motion을 통한 애니메이션
+
+**Backend Layer**
+
+- n8n 워크플로우 엔진
+- Webhook 기반 API 통신
+- Supabase 인증 및 데이터베이스
+
+**Data Layer**
+
+- Supabase PostgreSQL 데이터베이스
+- Supabase Storage (파일 저장)
+- Redis 캐싱 (필요시)
+
+### 데이터 모델
+
+**Users Table**
+
+```sql
+users (
+  id UUID PRIMARY KEY,
+  email VARCHAR UNIQUE NOT NULL,
+  username VARCHAR,
+  profile_image TEXT,
+  subscription_plan subscription_type DEFAULT 'free',
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+)
+```
+
+**Creatives Table**
+
+```sql
+creatives (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  type content_type NOT NULL,
+  title VARCHAR NOT NULL,
+  description TEXT,
+  file_url TEXT,
+  thumbnail_url TEXT,
+  metadata JSONB,
+  is_favorite BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT NOW()
+)
+```
+
+**Gallery Posts Table**
+
+```sql
+gallery_posts (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  creative_id UUID REFERENCES creatives(id),
+  title VARCHAR NOT NULL,
+  description TEXT,
+  tags TEXT[],
+  is_public BOOLEAN DEFAULT TRUE,
+  prompt_visible BOOLEAN DEFAULT FALSE,
+  view_count INTEGER DEFAULT 0,
+  like_count INTEGER DEFAULT 0,
+  comment_count INTEGER DEFAULT 0,
+  created_at TIMESTAMP DEFAULT NOW()
+)
+```
+
+**Gallery Likes Table**
+
+```sql
+gallery_likes (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  post_id UUID REFERENCES gallery_posts(id),
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE(user_id, post_id)
+)
+```
+
+**Gallery Comments Table**
+
+```sql
+gallery_comments (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  post_id UUID REFERENCES gallery_posts(id),
+  comment TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+)
+```
+
+**User Follows Table**
+
+```sql
+user_follows (
+  id UUID PRIMARY KEY,
+  follower_id UUID REFERENCES users(id),
+  following_id UUID REFERENCES users(id),
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE(follower_id, following_id)
+)
+```
+
+**Usage Logs Table**
+
+```sql
+usage_logs (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  service_type VARCHAR NOT NULL,
+  usage_count INTEGER DEFAULT 1,
+  date DATE DEFAULT CURRENT_DATE
+)
+```
+
+### API 및 통합
+
+**Authentication APIs**
+
+- POST /api/auth/login
+- POST /api/auth/signup
+- POST /api/auth/social (Google, Kakao, Naver)
+- POST /api/auth/verify-email
+
+**Generation APIs**
+
+- POST /api/generate/image
+- POST /api/generate/video
+- POST /api/generate/audio
+- POST /api/chat/concept-maker
+
+**Gallery APIs**
+
+- GET /api/gallery/posts (페이지네이션, 필터링)
+- POST /api/gallery/posts (게시물 생성)
+- PUT /api/gallery/posts/:id (게시물 수정)
+- DELETE /api/gallery/posts/:id (게시물 삭제)
+- POST /api/gallery/posts/:id/like (좋아요 토글)
+- GET /api/gallery/posts/:id/comments (댓글 조회)
+- POST /api/gallery/posts/:id/comments (댓글 작성)
+
+**Social APIs**
+
+- POST /api/social/follow (팔로우)
+- DELETE /api/social/follow/:id (언팔로우)
+- GET /api/social/followers/:userId (팔로워 목록)
+- GET /api/social/following/:userId (팔로잉 목록)
+- GET /api/social/feed (팔로잉 피드)
+
+**Content Management APIs**
+
+- GET /api/creatives
+- POST /api/creatives
+- PUT /api/creatives/:id
+- DELETE /api/creatives/:id
+
+**외부 서비스 통합**
+
+- OpenAI API (텍스트 생성, 챗봇)
+- Stability AI (이미지 생성)
+- Runway ML (비디오 생성)
+- ElevenLabs (오디오 생성)
+
+### 인프라 요구사항
+
+**Hosting & Deployment**
+
+- Vercel (Frontend 배포)
+- Supabase (Backend 서비스)
+- Cloudflare (CDN 및 보안)
+
+**모니터링 & 분석**
+
+- Sentry (에러 추적)
+- Google Analytics (사용자 분석)
+- Mixpanel (이벤트 추적)
+
+## Development Roadmap
+
+### Phase 1: Core Foundation (MVP)
+
+**범위:** 기본 인프라 및 핵심 기능 구현 
+**목표:** 사용자가 회원 가입하고 기본적인 AI 생성 기능을 사용할 수 있는 최소 기능 제품
+
+**주요 기능:**
+
+- 반응형 랜딩 페이지 (Hero 영상 포함)
+- 회원가입/로그인 시스템 (이메일 기반)
+- 기본 AI Studio 대시보드
+- 이미지 생성 기능 (단순 텍스트 to 이미지)
+- 기본 파일 저장 및 관리 시스템
+- 기본 Gallery 페이지 (이미지 표시만)
+- 기본 요금제 페이지
+
+### Phase 2: Enhanced Generation Tools
+
+**범위:** AI 생성 도구 확장 및 사용자 경험 개선 
+**목표:** 다양한 AI 생성 도구를 통한 종합적인 크리에이티브 플랫폼 구축
+
+**주요 기능:**
+
+- 비디오 생성 도구 (Video Gen)
+- 오디오 생성 도구 (Audio Gen)
+- 고급 이미지 편집 기능
+- 소셜 로그인 통합 (Google, Kakao, Naver)
+- 향상된 파일 관리 (태그, 검색, 즐겨찾기)
+- Gallery 소셜 기능 (좋아요, 댓글, 공유)
+- 사용자 프로필 및 팔로우 시스템
+- 사용량 추적 및 제한 시스템
+
+### Phase 3: Marketing Intelligence
+
+**범위:** 마케팅 전략 도구 및 인텔리전스 기능 
+**목표:** 단순 생성 도구를 넘어 전략적 마케팅 플랫폼으로 발전
+
+**주요 기능:**
+
+- BXONE1 마케팅 전략 도구
+- Concept Maker 챗봇
+- 브랜드 가이드라인 생성
+- 캠페인 성과 분석 도구
+- 팀 협업 기능 (Enterprise)
+- 고급 템플릿 시스템
+
+### Phase 4: Advanced Features & Optimization
+
+**범위:** 고급 기능 및 성능 최적화 
+**목표:** 프리미엄 사용자를 위한 고급 기능 및 전체적인 성능 향상
+
+**주요 기능:**
+
+- 커스텀 AI 모델 학습
+- 실시간 협업 기능
+- 고급 분석 및 인사이트
+- 모바일 앱 (PWA)
+- API 액세스 (Enterprise)
+- 다국어 지원
+
+## Logical Dependency Chain
+
+### Foundation Layer (최우선 개발)
+
+1. **기본 인프라 설정**
+    
+    - Supabase 프로젝트 설정
+    - 기본 데이터베이스 스키마 생성
+    - 인증 시스템 구축
+2. **핵심 UI 컴포넌트**
+    
+    - 헤더 네비게이션 (Gallery 포함)
+    - 기본 레이아웃 시스템
+    - 공통 UI 컴포넌트 라이브러리
+3. **랜딩 페이지**
+    
+    - Hero 섹션 (배경 영상 포함)
+    - 기본 소개 섹션
+    - CTA 버튼 연결
+
+### Core Functionality Layer
+
+1. **인증 시스템**
+    
+    - 이메일 회원가입/로그인
+    - 세션 관리
+    - 기본 프로필 관리
+2. **AI Studio 기본 구조**
+    
+    - 사이드바 네비게이션
+    - 메인 대시보드
+    - 기본 라우팅 시스템
+3. **첫 번째 AI 생성 도구 (Image Gen)**
+    
+    - 기본 텍스트 to 이미지 생성
+    - 결과 미리보기
+    - 파일 저장 기능
+
+### Enhancement Layer
+
+1. **Gallery 커뮤니티 기능**
+    
+    - 이미지 게시 및 공유 시스템
+    - 소셜 인터랙션 (좋아요, 댓글)
+    - 사용자 프로필 및 팔로우 시스템
+2. **추가 생성 도구**
+    
+    - My Creatives 페이지
+    - 기본 파일 나열 및 삭제
+    - 썸네일 생성
+3. **추가 생성 도구**
+    
+    - Video Gen 도구
+    - Audio Gen 도구
+    - 각 도구별 특화 UI
+4. **소셜 로그인 통합**
+    
+    - Google OAuth
+    - Kakao OAuth
+    - Naver OAuth
+
+### Advanced Features Layer
+
+1. **향상된 Gallery 기능**
+    
+    - 개인화 추천 시스템
+    - 트렌드 및 인기 콘텐츠 섹션
+    - 고급 검색 및 필터링
+    - 컬렉션 및 큐레이션 기능
+2. **고급 파일 관리**
+    
+    - BXONE1 기본 기능
+    - Concept Maker 챗봇
+    - 전략 수립 워크플로우
+3. **고급 파일 관리**
+    
+    - 태그 시스템
+    - 검색 기능
+    - 즐겨찾기 관리
+4. **구독 및 결제 시스템**
+    
+    - Pricing Plan 페이지
+    - 결제 처리
+    - 사용량 제한 로직
+
+## Risks and Mitigations
+
+### Technical Challenges
+
+**Risk 1: AI API 응답 시간 및 안정성**
+
+- **위험도:** 높음
+- **영향:** 사용자 경험 저하, 서비스 신뢰도 문제
+- **완화 방안:**
+    - 로딩 상태 UI를 통한 사용자 기대 관리
+    - 백업 AI 모델 및 폴백 시스템 구축
+    - 결과 캐싱을 통한 응답 시간 개선
+    - 점진적 기능 로딩 (Progressive Enhancement)
+
+**Risk 2: Supabase와 n8n 간의 복잡한 통합**
+
+- **위험도:** 중간
+- **영향:** 개발 지연, 데이터 동기화 문제
+- **완화 방안:**
+    - 초기 단계에서 간단한 직접 통합으로 시작
+    - n8n 워크플로우를 단계적으로 도입
+    - 철저한 API 문서화 및 테스트
+
+**Risk 3: 파일 저장 및 대역폭 비용**
+
+- **위험도:** 중간
+- **영향:** 운영 비용 증가
+- **완화 방안:**
+    - 파일 압축 및 최적화
+    - CDN 활용을 통한 전송 효율성 향상
+    - 사용량 기반 요금제 설계
+    - 주기적인 파일 정리 정책
+
+### MVP 구축 관련 위험
+
+**Risk 1: 기능 범위 과도한 확장**
+
+- **위험도:** 높음
+- **영향:** 개발 지연, 품질 저하
+- **완화 방안:**
+    - 엄격한 MVP 기능 정의 및 준수
+    - 사용자 피드백 기반 우선순위 조정
+    - 2주 단위 스프린트를 통한 점진적 개발
+
+**Risk 2: 사용자 확보 어려움**
+
+- **위험도:** 중간
+- **영향:** 서비스 성장 둔화
+- **완화 방안:**
+    - 베타 테스터 그룹 구성
+    - 콘텐츠 마케팅을 통한 인지도 향상
+    - 추천 시스템 및 인센티브 프로그램
+
+### 리소스 제약
+
+**Risk 1: 개발 리소스 부족**
+
+- **위험도:** 중간
+- **영향:** 개발 일정 지연
+- **완화 방안:**
+    - 우선순위 기반 기능 개발
+    - 외부 개발자 또는 에이전시 활용
+    - 오픈소스 라이브러리 적극 활용
+
+**Risk 2: AI API 사용 비용**
+
+- **위험도:** 높음
+- **영향:** 운영 비용 증가, 수익성 악화
+- **완화 방안:**
+    - 사용량 기반 요금제 설계
+    - 효율적인 프롬프트 엔지니어링
+    - 다양한 AI 모델 통합을 통한 비용 최적화
+    - 사용자 행동 분석을 통한 예측 가능한 비용 구조
+
+## Appendix
+
+### 기술 스택 상세 정보
+
+**Frontend 기술**
+
+- React 18.x (최신 Hook 및 Concurrent Features)
+- Next.js 14.x (App Router, Server Components)
+- TypeScript 5.x (타입 안정성)
+- Tailwind CSS 3.x (유틸리티 기반 스타일링)
+- Framer Motion 10.x (애니메이션)
+- Zustand 4.x (상태 관리)
+
+**Backend 기술**
+
+- Supabase (BaaS, PostgreSQL, Authentication)
+- n8n (Workflow Automation)
+- Node.js 18.x (서버 사이드 로직)
+
+**외부 서비스 통합**
+
+- OpenAI GPT-4 API (텍스트 생성, 챗봇)
+- Stability AI API (이미지 생성)
+- Runway ML API (비디오 생성)
+- ElevenLabs API (음성 생성)
+
+### 성능 목표
+
+**로딩 성능**
+
+- 첫 콘텐츠 페인트 (FCP): < 1.5초
+- 최대 콘텐츠 페인트 (LCP): < 2.5초
+- 상호작용 지연 (FID): < 100ms
+- 누적 레이아웃 이동 (CLS): < 0.1
+
+**기능 성능**
+
+- 이미지 생성 응답 시간: < 30초
+- 비디오 생성 응답 시간: < 2분
+- 음성 생성 응답 시간: < 10초
+- 챗봇 응답 시간: < 3초
+
+### 보안 고려사항
+
+**데이터 보호**
+
+- 모든 통신은 HTTPS로 암호화
+- 사용자 파일은 암호화되어 저장
+- 개인정보는 GDPR 및 개인정보보호법 준수
+
+**인증 보안**
+
+- JWT 토큰 기반 인증
+- 토큰 만료 시간 설정 (15분)
+- 리프레시 토큰 순환 정책
+- 소셜 로그인 OAuth 2.0 표준 준수
+
+**API 보안**
+
+- API 키 환경 변수 관리
+- 요청 속도 제한 (Rate Limiting)
+- 입력 데이터 검증 및 sanitization
+- CORS 정책 적용
+
+### 접근성 고려사항
+
+**웹 접근성 준수**
+
+- WCAG 2.1 AA 수준 준수
+- 키보드 네비게이션 지원
+- 스크린 리더 호환성
+- 색상 대비 4.5:1 이상 유지
+
+**사용자 경험 개선**
+
+- 로딩 상태 명확한 표시
+- 에러 메시지 사용자 친화적 표현
+- 도움말 및 툴팁 제공
+- 다양한 디바이스 크기 지원
+
+이 PRD 문서는 개발팀이 체계적이고 효율적으로 AI Creative Studio를 구축할 수 있도록 상세한 가이드라인을 제공합니다. 각 단계별로 명확한 목표와 위험 관리 방안을 포함하여 성공적인 제품 개발을 지원합니다.

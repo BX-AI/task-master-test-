@@ -1,0 +1,85 @@
+# PRD: Foundation Layer
+
+## Overview
+This document outlines the requirements for the **Foundation Layer** of the Task Master web application. The goal of this phase is to establish a robust and scalable technical infrastructure that will serve as the bedrock for all future feature development. This involves setting up separate, but connected, backend and frontend projects, establishing basic communication between them, and ensuring a clean, version-controlled starting point for the development team.
+
+## Core Features (Infrastructure)
+
+### 1. Backend Project Scaffolding (Spring Boot)
+- **What it is:** A fully configured, runnable Spring Boot application using Gradle.
+- **Why it's important:** This creates the server-side environment that will host all business logic, APIs, and data persistence layers.
+- **How it works at a high level:**
+    - Generate a standard Spring Boot project using the Spring Initializr.
+    - The project will be configured to use **Gradle** for dependency management.
+    - It will include the **Spring Web** dependency to enable RESTful API development.
+    - A standard package structure (`com.taskmaster.backend`) will be established.
+
+### 2. Frontend Project Scaffolding (React)
+- **What it is:** A fully configured, runnable React application.
+- **Why it's important:** This creates the client-side environment for building a modern, interactive user interface.
+- **How it works at a high level:**
+    - Use a standard tool like `create-react-app` or `Vite` to generate the initial React project.
+    - The project will use `npm` or `yarn` for package management.
+    - A basic file structure (`src/`, `public/`) will be in place.
+
+### 3. Backend Health Check API
+- **What it is:** A simple, unauthenticated API endpoint on the backend.
+- **Why it's important:** It serves as a basic "smoke test" to confirm the backend server is running, accessible, and capable of responding to HTTP requests.
+- **How it works at a high level:**
+    - Create a `@RestController` in the Spring Boot application.
+    - Implement a `GET` mapping for the path `/api/health`.
+    - The endpoint will return a simple JSON object, such as `{"status": "UP"}`.
+
+### 4. Frontend-to-Backend Communication
+- **What it is:** A mechanism for the React frontend to successfully make API calls to the Spring Boot backend during development.
+- **Why it's important:** Establishes the fundamental connection between the two application tiers, proving the architecture is viable.
+- **How it works at a high level:**
+    - Configure the React development server to proxy API requests (e.g., any request to `/api/*`) to the backend server (running on a different port). This avoids Cross-Origin Resource Sharing (CORS) errors in the development environment.
+    - The frontend will make a `fetch` request to the `/api/health` endpoint and display the returned status on the main page.
+
+## User Experience
+- **User Persona:** The primary user for this phase is the **Developer**.
+- **Key User Flow:**
+    1. A developer clones the repository.
+    2. The developer can navigate to the backend directory, install dependencies, and run the server.
+    3. The developer can navigate to the frontend directory, install dependencies, and run the development server.
+    4. The developer can open the application in a browser and see a confirmation that the frontend is successfully communicating with the backend.
+- **UI/UX Considerations:** The UI will be minimal—likely the default starter page of the React application, modified only to display the health check status.
+
+## Technical Architecture
+- **System Components:**
+    - **Backend:** Java-based Spring Boot application.
+    - **Frontend:** JavaScript-based React Single Page Application (SPA).
+    - **Build Tool (Backend):** Gradle.
+    - **Package Manager (Frontend):** npm (or yarn).
+- **Data Models:** No data models will be implemented in this phase.
+- **APIs and Integrations:**
+    - `GET /api/health`: A single endpoint to verify server status.
+- **Infrastructure Requirements:**
+    - Java Development Kit (JDK) 17 or higher.
+    - Node.js (latest LTS version).
+    - Git client.
+
+## Development Roadmap
+- **MVP Requirements (for this phase):** The deliverable for this phase is a single Git repository containing two subdirectories (one for the backend, one for the frontend). Both applications must be runnable with clear instructions, and the frontend must successfully fetch and display data from the backend's health check endpoint.
+- **Future Enhancements (to be built upon this foundation):**
+    - Database integration (e.g., PostgreSQL).
+    - User authentication and authorization.
+    - Containerization with Docker.
+    - CI/CD pipeline setup.
+
+## Logical Dependency Chain
+1.  Generate the Spring Boot backend project structure.
+2.  Implement the `/api/health` endpoint in the backend.
+3.  Generate the React frontend project structure.
+4.  Configure the development proxy in the frontend.
+5.  Implement the frontend logic to call the health endpoint and display its status.
+6.  Commit the complete, working foundation to the `main` branch of the repository.
+
+## Risks and Mitigations
+- **Risk:** Development environment inconsistencies between developers.
+    - **Mitigation:** The `README.md` file will clearly document the required versions of Java and Node.js.
+- **Risk:** CORS issues preventing the frontend from communicating with the backend.
+    - **Mitigation:** Implement a proxy in the frontend development server. This is a standard, low-risk solution for local development.
+- **Risk:** Difficulty in managing two separate projects (backend/frontend) in one repository.
+    - **Mitigation:** Maintain a clear directory structure and provide separate `README.md` files in each project's subdirectory with specific instructions for running and testing.
